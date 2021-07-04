@@ -11,7 +11,7 @@ ul class = "animais-lista js-tabmenu" >
    ...
    <
    /ul> <
-   div class = "animais-descricao js-tabcontent" >
+div class = "animais-descricao js-tabcontent" >
    ...
    <
    /div>
@@ -90,4 +90,4 @@ if (tabContent.length && tabMenu.length) {
    }
 }
 
-// o display none remove o texto até dos leitores de tela (acessibilidade
+// o display none remove o texto até dos leitores de tela (acessibilidade)
