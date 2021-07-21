@@ -141,3 +141,114 @@ total1; // 65
 
 const total2 = aulas.reduce((acc, cur) => acc + cur, 100);
 total2; // 165
+
+/**
+ * REDUCE PASSO A PASSO 1
+   O primeiro parâmetro do callback é o valor do segundo argumento
+   passado no reduce(callback, inicial) durante a primeira iteração.
+   Nas iterações seguintes este valor passa a ser o retornado pela anterior.
+ */
+
+const aulas = [10, 25, 30];
+
+// 1
+aulas.reduce((0, 10) => {
+   return 0 + 10;
+}, 0); // retorna 10
+
+// 2
+aulas.reduce((10, 25) => {
+   return 10 + 25;
+}, 0); // retorna 35
+
+// 3
+aulas.reduce((35, 30) => {
+   return 35 + 30;
+}, 0); // retorna 65
+
+
+/**
+ * REDUCE PASSO A PASSO 2
+   Se não definirmos o valor inicial do acumulador, ele irá pular a
+   primeira iteração e começara a partir da segunda. Neste caso o
+   valor do acumulador será o valor do item da primeira iteração.
+ */
+
+const aulas = [10, 25, 30];
+
+// 1
+aulas.reduce((10, 25) => {
+   return 10 + 25;
+}) // retorna 35
+
+// 2
+aulas.reduce((35, 30) => {
+   return 35 + 30;
+}) // retorna 65
+
+
+/**
+ * MAIOR VALOR COM [].REDUCE()
+ */
+const numeros = [10, 25, 60, 5, 35, 10];
+
+const maiorValor = numeros.reduce((anterior, atual) => {
+   return anterior < atual ? atual : anterior;
+});
+
+maiorValor; // 60
+
+/**
+ * PODEMOS RETORNAR OUTROS VALORES
+ */
+const aulas = [
+   {
+      nome: 'HTML 1',
+      min: 15
+   },
+   {
+      nome: 'HTML 2',
+      min: 10
+   },
+   {
+      nome: 'CSS 1',
+      min: 20
+   },
+   {
+      nome: 'JS 1',
+      min: 25
+   },
+]
+
+const listaAulas = aulas.reduce((acumulador, atual, index) => {
+   acumulador[index] = atual.nome;
+   return acumulador;
+}, {})
+
+/**
+ * PASSO A PASSO REDUCE
+   Passo a passo do método reduce criando um Objeto.
+ */
+// 1
+aulas.reduce(({ }, { nome: 'HTML 1', min: 15}, 0) => {
+   { } [0] = 'HTML 1';
+   return { 0: 'HTML 1' };
+}, {})
+
+// 2
+aulas.reduce(({ 0: 'HTML 1'}, { nome: 'HTML 2', min: 10}, 1) => {
+   { 0: 'HTML 1' } [1] = 'HTML 2';
+   return { 0: 'HTML 1', 1: 'HTML 2' };
+}, {})
+
+// 3
+aulas.reduce(({ 0: 'HTML 1', 1: 'HTML 2'}, { nome: 'CSS 1', min: 20}, 2) => {
+   { 0: 'HTML 1', 1: 'HTML 2' } [2] = 'CSS 1';
+   return { 0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1' };
+}, {})
+
+// 4
+aulas.reduce(({ 0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'}, { nome: 'JS 1', min: 25}, 3) => {
+   { 0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1' } [3] = 'JS 1';
+   return { 0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1', 3: 'JS 1' };
+}, {})
