@@ -262,7 +262,3 @@ Object.prototype.toString.call(carro); // [object Object]
 const li = document.querySelectorAll('li');
 typeof li; // object
 Object.prototype.toString.call(li); // [object NodeList]
-
-/**
- *
- */
